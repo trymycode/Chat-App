@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ChatModule } from './chat/chat.module';
 import { UserModule } from './user/user.module';
@@ -16,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     ChatModule,
     UserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
