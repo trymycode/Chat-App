@@ -14,7 +14,7 @@ export class SignupComponent implements OnInit {
   public password: any;
   public apiKey: any;
   constructor(public appService: AppService,
-    public router: Router,) { }
+    public router: Router) { }
 
   ngOnInit() {
   }

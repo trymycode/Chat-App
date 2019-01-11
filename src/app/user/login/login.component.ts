@@ -2,7 +2,7 @@ import { AppComponent } from './../../app.component';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppService } from './../../app.service';
-
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   public email: any;
   public password: any;
 
-  constructor( public appService: AppService, public router: Router ) { }
+  constructor( public appService: AppService, public router: Router,private cookieService: CookieService ) { }
 
   ngOnInit() {
   }
@@ -46,14 +46,14 @@ export class LoginComponent implements OnInit {
           if (apiResponse.status === 200) {
             console.log(apiResponse)
 
-            //  Cookie.set('authtoken', apiResponse.data.authToken);
+             this.cookieService.set('authtoken', apiResponse.data.authToken);
             
-            //  Cookie.set('receiverId', apiResponse.data.userDetails.userId);
-            
-            //  Cookie.set('receiverName', apiResponse.data.userDetails.firstName + ' ' + apiResponse.data.userDetails.lastName);
+             this.cookieService.set('receiverId', apiResponse.data.userDetails.userId);
+          
+             this.cookieService.set('receiverName', apiResponse.data.userDetails.firstName + ' ' + apiResponse.data.userDetails.lastName);
            
-            //  this.appService.setUserInfoInLocalStorage(apiResponse.data.userDetails)
-            alert("Logged in successfully");
+             this.appService.setUserInfoInLocalStorage(apiResponse.data.userDetails);
+             alert("Logged in successfully");
              this.router.navigate(['/chat']);
 
           } else {
