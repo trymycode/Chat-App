@@ -11,6 +11,15 @@ export class AppService {
   private url ="https://chatapi.edwisor.com";
 
   constructor( private http: HttpClient ) { }
+
+  public getUserInfoFormLocalStorage=()=>{
+    return JSON.parse(localStorage.getItem('userInfo'));
+  }
+
+  public setUserInfoInLocalStorage=(data)=>{
+    localStorage.setItem('userInfo',JSON.stringify(data));
+  }
+
   public signupFunction(data): Observable<any> {
     const params = new HttpParams()
     .set('firstName', data.firstName)
