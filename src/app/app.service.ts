@@ -12,9 +12,13 @@ export class AppService {
 
   constructor( private http: HttpClient ) { }
 
-  public getUserInfoFormLocalStorage=()=>{
+  public getUserInfoFromLocalstorage = () => {
+
     return JSON.parse(localStorage.getItem('userInfo'));
-  }
+
+  } // end getUserInfoFromLocalstorage
+
+ 
 
   public setUserInfoInLocalStorage=(data)=>{
     localStorage.setItem('userInfo',JSON.stringify(data));

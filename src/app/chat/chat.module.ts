@@ -1,11 +1,17 @@
+import { SocketService } from './../socket.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChatBoxComponent } from './chat-box/chat-box.component';
-
+import { RouterModule, Routes } from '@angular/router';
 @NgModule({
   declarations: [ChatBoxComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild([ 
+      { path: 'chat', component: ChatBoxComponent }
+    ])
   ]
 })
-export class ChatModule { }
+export class ChatModule { 
+  constructor(public SocketService: SocketService){}
+}
